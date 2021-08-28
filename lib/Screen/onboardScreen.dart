@@ -20,24 +20,28 @@ class _OnboardScreenState extends State<OnboardScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: IntroductionScreen(
-        pages: listPagesViewModel(),
-        done: const Text("Giriş Yap", style: TextStyle(fontWeight: FontWeight.w600)),
-        color: Colors.purple,
-        dotsDecorator: DotsDecorator(color: Colors.purple, activeColor: Colors.black),
-        showSkipButton: true,
-        showNextButton: true,
-        isBottomSafeArea: true,
-        isTopSafeArea: true,
-        next: Text("Devam Et"),
-        skip: Text("Atla"),
-        onSkip: () {
-          goHomePage(context);
-        },
-        onDone: () {
-          goHomePage(context);
-        },
-      ), //Material App,
+      body: buildIntroductionScreen(context), //Material App,
+    );
+  }
+
+  IntroductionScreen buildIntroductionScreen(BuildContext context) {
+    return IntroductionScreen(
+      pages: listPagesViewModel(),
+      done: const Text("Giriş Yap", style: TextStyle(fontWeight: FontWeight.w600)),
+      color: Colors.purple,
+      dotsDecorator: DotsDecorator(color: Colors.purple, activeColor: Colors.black),
+      showSkipButton: true,
+      showNextButton: true,
+      isBottomSafeArea: true,
+      isTopSafeArea: true,
+      next: Text("Devam Et"),
+      skip: Text("Atla"),
+      onSkip: () {
+        goHomePage(context);
+      },
+      onDone: () {
+        goHomePage(context);
+      },
     );
   }
 }
